@@ -1,0 +1,36 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "pbx";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Delet usere by Using ID 
+$sql = "DELETE FROM pbxusers WHERE id=1";
+
+if (mysqli_query($conn, $sql)) {
+  echo "Record deleted successfully";
+} else {
+  echo "Error deleting record: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
+-------------------------------------------------------- check if user have id (1) deleted -------------------------------------------------------------------
+
+MariaDB [pbx]> select * from pbxusers;
++----+-------+-----------+-------------------+---------------------+
+| id | name  | phone     | email             | reg_date            |
++----+-------+-----------+-------------------+---------------------+
+|  2 | maro  |  35991421 | maro@example.com  | 2020-10-28 13:45:36 |
+|  3 | slim  |  74871325 | slim@example.com  | 2020-10-28 13:45:36 |
+|  4 | amani | 539872212 | amani@example.com | 2020-10-28 13:45:36 |
++----+-------+-----------+-------------------+---------------------+
+3 rows in set (0.00 sec)
