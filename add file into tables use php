@@ -1,0 +1,34 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "pbx";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "INSERT INTO pbxusers (name, phone, email)
+VALUES ('mohamedali', '23779194', 'ali@gmail.com')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "data add to pbx table ";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
+
+---------------------------- check MYSQL ------------------------
+
+select * from pbxusers;
++----+------------+----------+---------------+---------------------+
+| id | name       | phone    | email         | reg_date            |
++----+------------+----------+---------------+---------------------+
+|  1 | mohamedali | 23779194 | ali@gmail.com | 2020-10-28 13:36:37 |
++----+------------+----------+---------------+---------------------+
+1 row in set (0.00 sec)
