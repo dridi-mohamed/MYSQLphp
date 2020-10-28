@@ -1,0 +1,52 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "pbx";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+
+// UPDATE phone user have ID(4) to hazar
+$sql = "UPDATE pbxusers SET phone='74881951' WHERE id=4";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Record updated successfully";
+} else {
+  echo "Error updating record: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+
+
+
+----------------------------- check if the number of amani change ---------------------------------------------------
+
+
+
+MariaDB [pbx]> select * from pbxusers;
++----+-------+-----------+-------------------+---------------------+
+| id | name  | phone     | email             | reg_date            |
++----+-------+-----------+-------------------+---------------------+
+|  2 | maro  |  35991421 | maro@example.com  | 2020-10-28 13:45:36 |
+|  3 | slim  |  74871325 | slim@example.com  | 2020-10-28 13:45:36 |
+|  4 | amani | 539872212 | amani@example.com | 2020-10-28 13:45:36 |
++----+-------+-----------+-------------------+---------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [pbx]> select * from pbxusers;
++----+-------+----------+-------------------+---------------------+
+| id | name  | phone    | email             | reg_date            |
++----+-------+----------+-------------------+---------------------+
+|  2 | maro  | 35991421 | maro@example.com  | 2020-10-28 13:45:36 |
+|  3 | slim  | 74871325 | slim@example.com  | 2020-10-28 13:45:36 |
+|  4 | amani | 74881951 | amani@example.com | 2020-10-28 14:43:25 |
++----+-------+----------+-------------------+---------------------+
+3 rows in set (0.00 sec)
